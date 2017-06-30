@@ -1,0 +1,30 @@
+{
+  "name": "bandujo-test",
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "modernizr": "~2.8.3",
+    "lightslider": "^1.1.6",
+    "scrollmagic": "ScrollMagic#^2.0.5",
+    "gsap": "GreenSock-JS#^1.19.1"
+  },
+  "overrides": {
+    "bootstrap-sass": {
+      "main": [
+        "assets/stylesheets/_bootstrap.scss",
+        "assets/fonts/bootstrap/*",
+        "assets/javascripts/bootstrap.js"
+      ]
+    },
+    "gsap": {
+      "main":[
+        "/bower_components/gsap/src/minified/TweenMax.min.js",
+        "/bower_components/gsap/src/minified/TimelineMax.min.js"
+      ]
+    }
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  }
+}
