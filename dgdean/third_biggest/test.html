@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Get the 3rd largest number</title>
+</head>
+<body>
+	<script>
+
+	function thirdLargest(arr) {
+
+		function sortNumber(a,b) {
+	    return a-b;
+		}
+
+		let oldArray = [] ,
+				newArray = arr,
+				sorted,
+				third,
+				position,
+				answer,
+				para = document.createElement("P"),
+				text;
+
+		//duplicate array
+		oldArray = newArray.slice(0);
+		//get the 3rd largest number
+		sorted = arr.sort(sortNumber).reverse();
+		third = parseInt(sorted[2]);
+		position = oldArray.indexOf(third);
+		answer = 'The 3rd largest number is '+ third + ' And it sits ' + (position+1) + ' position in the array';
+
+		//append answer to document
+		text = document.createTextNode(answer);
+		para.appendChild(text);
+		document.body.appendChild(para);
+
+		return answer;
+	}
+
+	console.log( thirdLargest([1,6,2,15,67,3,11]) );
+	</script>
+</body>
+</html>
