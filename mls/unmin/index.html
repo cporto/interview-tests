@@ -1,0 +1,664 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Rich Media</title>
+<meta name="description" content="Rich Media Test">
+<meta name="author" content="Carlos Porto ">
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<style>/* --- helper classes --- */
+/* line 2, ../../src/sass/_helpers.scss */
+#console {
+  background: rgba(255, 128, 0, 0.75);
+  color: #000;
+  position: absolute;
+  z-index: 1000;
+}
+
+/* line 3, ../../src/sass/_helpers.scss */
+.show {
+  display: block !important;
+}
+
+/* line 4, ../../src/sass/_helpers.scss */
+.hide {
+  display: none !important;
+}
+
+/* line 5, ../../src/sass/_helpers.scss */
+.hidden {
+  -webkit-transform: translate3d(999999px, 999999px, 0) !important;
+}
+
+/* apply a natural box layout model to all elements */
+/* line 7, ../../src/sass/_helpers.scss */
+html {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 12, ../../src/sass/_helpers.scss */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* line 15, ../../src/sass/_helpers.scss */
+body {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  font: 100% 'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+/* line 25, ../../src/sass/_helpers.scss */
+#loader {
+  font-size: 3.2em;
+  color: #fff;
+  position: relative;
+}
+
+/* line 31, ../../src/sass/_helpers.scss */
+#meter {
+  height: 20px;
+  width: 200px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+  position: absolute;
+  top: 50%;
+  /*centering*/
+  left: 50%;
+  margin-top: -10px;
+  /* Half the height */
+  margin-left: -100px;
+  /* Half the width */
+}
+
+/* line 45, ../../src/sass/_helpers.scss */
+#meter span {
+  display: block;
+  height: 100%;
+  border-radius: 20px;
+  background-color: red;
+  box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* mobile */
+/* .orientright #container{
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin:230px 230px;
+  position: absolute;
+  left: -100px;
+} */
+/* tablet */
+/* line 64, ../../src/sass/_helpers.scss */
+.orientright #container {
+  -webkit-transform: rotate3d(0, 0, 1, 90deg);
+  -webkit-transform-origin: 512px 384px;
+  position: absolute;
+  left: -128px;
+  top: 128px;
+}
+
+/* line 74, ../../src/sass/_helpers.scss */
+.fadein {
+  -webkit-animation: FADEIN .2s ease-in;
+}
+
+@-webkit-keyframes FADEIN {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* line 79, ../../src/sass/_helpers.scss */
+.fadeout {
+  -webkit-animation: FADEOUT .2s ease-in;
+}
+
+@-webkit-keyframes FADEOUT {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* line 85, ../../src/sass/_helpers.scss */
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 21, ../../src/sass/style.scss */
+#loader {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 24, ../../src/sass/style.scss */
+#container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: none;
+  background: url(img/desktop.jpg) no-repeat center top;
+}
+
+/* line 31, ../../src/sass/style.scss */
+.cup {
+  max-width: 29.7%;
+  height: auto;
+  background-size: 594px auto;
+  position: absolute;
+  z-index: 1;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* line 41, ../../src/sass/style.scss */
+.confetti {
+  max-width: 100%;
+  height: auto;
+  background-size: 1947px auto;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+/* line 51, ../../src/sass/style.scss */
+.l_por,
+.r_dal {
+  max-width: 100%;
+  height: auto;
+  top: 0;
+  z-index: 3;
+  position: absolute;
+}
+
+/* line 58, ../../src/sass/style.scss */
+.l_por {
+  left: -16%;
+  background-size: 1496px auto;
+}
+
+/* line 62, ../../src/sass/style.scss */
+.r_dal {
+  right: -16%;
+  background-size: 1558px auto;
+}
+
+/* line 67, ../../src/sass/style.scss */
+.txt_1,
+.txt_2,
+.txt_3 {
+  height: auto;
+  display: block;
+  position: absolute;
+  z-index: 4;
+  left: 35%;
+}
+
+/* line 77, ../../src/sass/style.scss */
+.txt_1 {
+  top: 20%;
+  max-width: 29.7%;
+  background-size: 594px auto;
+}
+
+/* line 82, ../../src/sass/style.scss */
+.txt_2 {
+  top: 43%;
+  max-width: 29.85%;
+  background-size: 597px auto;
+}
+
+/* line 87, ../../src/sass/style.scss */
+.txt_3 {
+  top: 60%;
+  max-width: 29.65%;
+  background-size: 593px auto;
+}
+
+/* line 94, ../../src/sass/style.scss */
+.logo_portland,
+.logo_dallas {
+  height: auto;
+  display: block;
+  position: absolute;
+  z-index: 5;
+  top: 10%;
+}
+
+/* line 104, ../../src/sass/style.scss */
+.logo_portland {
+  max-width: 42.55%;
+  background-size: 851px auto;
+  left: -10%;
+}
+
+/* line 110, ../../src/sass/style.scss */
+.logo_dallas {
+  max-width: 41.7%;
+  background-size: 834px auto;
+  right: -10%;
+}
+
+/* line 116, ../../src/sass/style.scss */
+.shade {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* line 125, ../../src/sass/style.scss */
+.end {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: #060702;
+}
+
+/* line 131, ../../src/sass/style.scss */
+.vidopen {
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  right: 11%;
+  top: 5%;
+  border: 0;
+  background-color: transparent;
+}
+
+/* line 142, ../../src/sass/style.scss */
+.btn {
+  max-width: 11.2%;
+  height: auto;
+  background-size: 224px auto;
+  position: absolute;
+  right: 15%;
+  top: 15%;
+  z-index: 3;
+}
+
+/* line 151, ../../src/sass/style.scss */
+.close {
+  max-width: 5.45%;
+  height: auto;
+  background-size: 109px auto;
+  position: absolute;
+  right: -2.5%;
+  top: -5%;
+  z-index: 3;
+}
+
+/* line 161, ../../src/sass/style.scss */
+.play {
+  max-width: 7.95%;
+  height: auto;
+  background-size: 159px auto;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translateX(-50%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* line 172, ../../src/sass/style.scss */
+.tunein,
+.tunein_bg {
+  width: auto;
+  max-height: 100%;
+  top: 0;
+  position: absolute;
+}
+
+/* line 179, ../../src/sass/style.scss */
+.tunein {
+  z-index: 2;
+  left: 0;
+  background-size: 1275px auto;
+}
+
+/* line 184, ../../src/sass/style.scss */
+.tunein_bg {
+  z-index: 1;
+  right: 0;
+  background-size: 1710px auto;
+}
+
+/* line 191, ../../src/sass/style.scss */
+.modal_wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: .4s;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 100;
+}
+
+/* line 204, ../../src/sass/style.scss */
+.modal_content {
+  max-width: 800px;
+  width: 100%;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+/* line 215, ../../src/sass/style.scss */
+.modal_open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* line 220, ../../src/sass/style.scss */
+video {
+  max-width: 800px;
+  width: 100%;
+  height: auto;
+}
+
+/*# sourceMappingURL=style.css.map */</style>
+</head>
+
+<body>
+<div id="container">
+
+	<div class="end">
+		<div class="modal_wrapper">
+	        <div class="modal_content">
+				<img src="img/close.png" alt="" class="close">	
+				<img src="img/play.png" alt="" class="play">	
+				
+				<video class="media-video">
+					<source src="vids/A001C041_141123_R44F.mp4" type="video/mp4">
+				</video>
+			</div>
+		</div>
+
+
+		<img src="img/tv_button.png" alt="" class="btn">	
+		<img src="img/tunein.png" alt="" class="tunein">	
+		<img src="img/tunein_bg.jpg" alt="" class="tunein_bg">	
+	</div>
+
+	<div class="shade"></div>
+	<img src="img/dallas.png" alt="" class="logo_dallas">
+	<img src="img/portland.png" alt="" class="logo_portland">
+	<img src="img/txt_glory.png" alt="" class="txt_3">
+	<img src="img/txt_game.png" alt="" class="txt_2">
+
+	<img src="img/por.png" alt="" class="l_por">
+	<img src="img/dal.png" alt="" class="r_dal">
+	
+	<img src="img/txt_one.png" alt="" class="txt_1">
+	<img src="img/confetti.png" alt="" class="confetti">
+	<img src="img/cup.png" alt="" class="cup">
+	
+	
+	
+</div><!--! /#container -->
+
+<!--CDN link for the latest TweenMax-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+
+<script async>"use strict";
+(function( dd, undefined ) {
+  //micro-framework
+  function $(id){return document.querySelector(id)}
+  function remove(el){(el=$(el)).parentNode.removeChild(el)}
+  function prepend(parentID,child){parent=$(parentID);parent.insertBefore(child,parent.childNodes[0]);}
+  function hasClass(ele,cls){return ele.className && new RegExp("(^|\\s)" + cls + "(\\s|$)").test(ele.className);}
+  function addClass(ele,cls){if(!hasClass(ele,cls)) ele.className += " "+cls}
+  function removeClass(ele,cls){if(hasClass(ele,cls)){var reg=new RegExp('(\\s|^)'+cls+'(\\s|$)');ele.className=ele.className.replace(reg,' ')}}
+  //Event delegation
+  dd.getTarget=function(e){e=e||window.event; return e.target||e.srcElement;}
+  //check if it's ios 6
+  var ios6 = navigator.userAgent.match(/OS 6_[0-9_]+ like Mac OS X/i)!=null;
+  //Check it it's android
+  var ua = navigator.userAgent.toLowerCase();
+  dd.isAndroid = ua.indexOf("android") > -1; //&amp;&amp; ua.indexOf("mobile");
+  //Use touchstart for event listeners when on mobiles
+  dd.clickEvent = ('ontouchstart' in window ? 'touchend' : 'click');
+  //Get url parameters USAGE: &vid=[tuneIn]&adId=[adId]
+  dd.urlParams = (function(s) {
+      var P = {};
+      s.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+          function (str, key, value) {
+              P[key] = value;
+          });
+      return P;
+  })(window.location.search);
+
+  
+  var cdn="img/";
+
+
+  //Public Globals
+  dd.dev = true;
+  dd.count = 0;
+  dd.endTarget = '';
+  dd.tracking = '';
+  dd.images = [
+
+ "desktop.jpg"
+,"confetti.png"
+,"cup.png"
+,"close.png"
+,"dal.png"
+,"por.png"
+,"dallas.png"
+,"portland.png"
+,"txt_game.png"
+,"txt_glory.png"
+,"txt_one.png"
+,"tunein.png"
+,"tunein_bg.jpg"
+,"tv_button.png"
+,"play.png"
+  ];
+
+  function start(){
+    addClass($('#container'),'show fadein');
+  }
+
+//hide elements
+var hiddenEl = [
+ ".end"
+,".shade"
+,".logo_dallas"
+,".logo_portland"
+]
+
+TweenLite.set( hiddenEl, {autoAlpha:0});
+
+//Animation Timeline
+dd.tl = new TimelineMax({delay:1.6});
+
+
+dd.tl
+.from('.cup', 1.4, {css:{bottom:"-800px"},ease: Back.easeOut.config(1)})
+.from('.confetti', 3, {css:{bottom:"-2400px"},ease: Power4.easeOut},"-=1")
+.to('.confetti', 2, {css:{bottom:"-400px"}})
+.addLabel('closeup',"-=2")
+.from('.l_por', 2, {css:{left:"-100%"},ease: Power4.easeInOut},'closeup')
+.from('.r_dal', 2, {css:{right:"-100%"},ease: Power4.easeInOut},'closeup')
+.from('.txt_1', .5, {css:{autoAlpha:0},ease: Power3.easeInOut})
+.from('.txt_2', .5, {css:{autoAlpha:0},ease: Power3.easeInOut})
+.from('.txt_3', .5, {css:{autoAlpha:0},ease: Power3.easeInOut})
+.set( ['.cup','.confetti'], {autoAlpha:0})
+.to('.logo_portland', 1, {css:{autoAlpha:"1",scale:".5", left:"-5%"},ease: Power3.easeInOut})
+.to('.logo_dallas', 1, {css:{autoAlpha:"1",scale:".5", right:"-5%"},ease: Power3.easeInOut},"-=1")
+.set( ['.end','.shade'], {autoAlpha:1})
+.addLabel('openup')
+.to(['.txt_1','.txt_2','.txt_3'], .5, {css:{autoAlpha:0},ease: Power3.easeIn},'openup')
+.to('.l_por', 2, {css:{left:"-100%"},ease: Power4.easeIn},'openup')
+.to('.r_dal', 2, {css:{right:"-100%"},ease: Power4.easeIn},'openup')
+.to('.logo_portland', 2, {css:{left:"-100%"},ease: Power4.easeIn},'openup')
+.to('.logo_dallas', 2, {css:{right:"-100%"},ease: Power4.easeIn},'openup')
+.to('.shade', 2.5, {css:{autoAlpha:0},ease: Power3.easeIn},'openup')
+.set( ['.l_por','.r_dal','.logo_portland','.logo_dallas','.shade'], {autoAlpha:0})
+;
+
+//Modal box, modified from github.com/ferspeak/modalzinha-js
+dd.modal = (function() {
+
+  var modalOpen = document.querySelector('.btn'),
+      modalClose = document.querySelector('.close'),
+      modalWrapper = document.querySelector('.modal_wrapper');
+
+  return {
+    init: function() {
+      this.open();
+      this.close();
+    },
+
+    open: function() {
+      modalOpen.onclick = function(e) {
+        e.preventDefault;
+        modalWrapper.classList.add("modal_open");
+      }
+    },
+
+    close: function() {
+      modalClose.onclick = function(e) {
+        e.preventDefault;
+        modalWrapper.classList.remove("modal_open");
+        //pause video in case it's playing
+        mediaPlayer.pause();
+        TweenLite.to( play, .5, {autoAlpha:1});
+      }
+    }
+  }
+}());
+
+dd.modal.init();
+
+// Simple video player
+var play = $('.play'),
+    playPause = $('.media-video'),
+    mediaPlayer = $('.media-video');
+
+playPause.onclick = function(e) {
+  e.preventDefault; 
+
+  // If paused or ended
+  if (mediaPlayer.paused || mediaPlayer.ended) {
+
+    TweenLite.to( play, .5, {autoAlpha:0});
+    mediaPlayer.play();
+    console.log('playing')
+  }
+  // If playing
+  else {
+    TweenLite.to( play, .5, {autoAlpha:1});
+    mediaPlayer.pause();
+    console.log('paused')
+  }
+}
+
+
+
+
+function imgLoader(){
+  //Array of paths to each image
+  var countdown = 0;
+  //current progress
+  var currProgress = 0;
+  //total progress amount
+  var total = 0;
+  //build the progress bar
+  var docfrag = document.createDocumentFragment();
+  var loader = document.createElement('div');
+  loader.id = 'loader';
+  var meter = document.createElement('div');
+  meter.id = 'meter';
+  var span = document.createElement('span');
+  span.style.width="20%";
+
+  meter.appendChild(span)
+  loader.appendChild(meter)
+  docfrag.appendChild(loader);
+  //attaching it to the body to load before other elements
+  $('body').appendChild(docfrag);
+
+  if(dd.images.length===0){
+    setTimeout( function(){
+      remove('#loader');
+      start();
+    }, 500);
+  } else {
+    // Loop through array to start preloading images
+    for(var i=0, il=dd.images.length; i<il; i++){
+      //set the total of the progress
+      total=il;
+
+      var name = 'imageObj'+i;
+      name = new Image();
+      name.src =  cdn + dd.images[i];
+      //Exectue after everything has downloaded
+      name.onload = function() {
+        countdown++;
+        currProgress++;
+        //update the progress bar
+        span.style.width= Math.round((currProgress/total)*100)+"%";
+
+        //console.log(countdown, il, currProgress);
+
+        //Check to see if all images have finished loading, then remove loader and display start button
+        if(countdown==il){
+          setTimeout( function(){
+              remove('#loader');
+              start();
+          }, 500);
+        }
+      }
+    }
+  }
+}
+
+
+  //Public init method
+  // Handle what we need to do when ad hits the screen (vs cached in background)
+  dd.init = function() {
+    imgLoader();
+    //listen to when animations end and play through
+    document.addEventListener("webkitAnimationEnd", dd.animationlistener , false);
+  };
+
+}( window.dd = window.dd || {} ));
+
+
+	document.addEventListener("DOMContentLoaded", function() {
+	  setTimeout(dd.init, 100);
+	}, false);</script>
+
+</body>
+</html>
