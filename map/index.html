@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Airport Distance Calculator</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/normalize.min.css">
+<link rel="stylesheet" href="css/auto-complete.css">
+<link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+
+<div class="header-container">
+  <header class="wrapper clearfix">
+    <h1 class="title">Airport Distance Calculator</h1>
+  </header>
+</div>
+
+<div class="main-container">
+<div class="main wrapper clearfix">
+  <article>
+    <section>
+      <form>
+        <p>Type any city or airport name to find the distance between each of them.</p>
+    		<fieldset>
+    		    <label for="from">From</label>
+    		    <input id="from" name="from" type="text" value="">
+    		</fieldset>
+
+    		<fieldset>
+    		    <label for="to">To</label>
+    		    <input id="to" name="to" type="text" value="">
+    		</fieldset>
+
+    		<button id="btn">Calculate</button>
+    	</form>
+    </section>
+
+    <section>
+    	<p id="miles" class="visuallyhidden"></p>
+      <span id="reset" class="visuallyhidden">x</span>
+    </section>
+      
+  </article>
+
+  <div id="map"></div>
+
+</div>
+<script type="text/javascript" src="js/auto-complete.min.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSd-f-KUIs94ogH3ZWwkEJDSoc_iJqqWA&callback=initMap&libraries=geometry"
+    async defer></script>
+
+</body>
+</html>
